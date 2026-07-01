@@ -1,0 +1,12 @@
+<h1>Edit Product</h1>
+
+<form method="POST">
+
+    <input name="name" value="{{ product.name }}" required>
+    <input name="description" value="{{ product.description }}" required>
+    <input name="price" value="{{ product.price }}" required>
+    <input name="stock" value="{{ product.stock }}" required>
+
+    <button type="submit">Save Changes</button>
+
+</form>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Scoops.lb</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Navigation -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Scoops.lb
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/shop">Shop</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/cart">Cart</a></li>
+        </ul>
+
+    </nav>
+
+    <!-- Checkout Section -->
+
+    <section class="checkout-page">
+
+        <div class="checkout-container">
+
+            <h1>Checkout</h1>
+
+            <p>
+                Please fill in your delivery information.
+            </p>
+
+            <h2>
+                <p>Subtotal: ${{ total }}</p>
+
+<p>Delivery Fee: ${{ delivery }}</p>
+
+<h3>Total: ${{ final_total }}</h3>
+            </h2>
+
+            <form method="POST">
+
+                <!-- Customer Information -->
+
+                <label for="customer_name">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="customer_name"
+                    name="customer_name"
+                    required
+                >
+
+                <label for="phone">
+                    Phone Number
+                </label>
+
+                <input
+                    type="text"
+                    id="phone"
+                    name="phone"
+                    required
+                >
+
+                <!-- Address Information -->
+
+                <label for="city">
+                    City
+                </label>
+
+                <input
+                    type="text"
+                    id="city"
+                    name="city"
+                    required
+                >
+
+                <label for="street_name">
+                    Street Name
+                </label>
+
+                <input
+                    type="text"
+                    id="street_name"
+                    name="street_name"
+                    required
+                >
+
+                <label for="building">
+                    Apartment / Building
+                </label>
+
+                <input
+                    type="text"
+                    id="building"
+                    name="building"
+                    required
+                >
+
+                <label for="floor_number">
+                    Floor Number
+                </label>
+
+                <input
+                    type="text"
+                    id="floor_number"
+                    name="floor_number"
+                    required
+                >
+
+                <button
+                    type="submit"
+                    class="checkout-btn"
+                >
+                    Place Order
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+            © 2026 Scoops.lb. All Rights Reserved.
+        </p>
+
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed - Scoops.lb</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Navigation -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Scoops.lb
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/shop">Shop</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/cart">Cart</a></li>
+        </ul>
+
+    </nav>
+
+    <!-- Success Section -->
+
+    <section class="success-page">
+
+        <div class="success-container">
+
+            <h1>🎉 Order Confirmed!</h1>
+
+            <p>
+                Thank you for your order.
+            </p>
+
+            <p>
+                Your order has been received successfully and will be reviewed shortly.
+            </p>
+
+            <div class="order-details">
+
+                <h3>Order Information</h3>
+
+                <p>
+                    <strong>Order Number:</strong>
+                    #{{ order.id }}
+                </p>
+
+                <p>
+                    <strong>Name:</strong>
+                    {{ order.customer_name }}
+                </p>
+
+                <p>
+                    <strong>Phone:</strong>
+                    {{ order.phone }}
+                </p>
+
+                <p>
+                    <strong>City:</strong>
+                    {{ order.city }}
+                </p>
+
+                <p>
+                    <strong>Street:</strong>
+                    {{ order.street_name }}
+                </p>
+
+                <p>
+                    <strong>Building / Apartment:</strong>
+                    {{ order.building }}
+                </p>
+
+                <p>
+                    <strong>Floor Number:</strong>
+                    {{ order.floor_number }}
+                </p>
+
+                <p>
+                    <strong>Total:</strong>
+                    ${{ order.total_price }}
+                </p>
+
+                <p>
+                    <strong>Status:</strong>
+                    {{ order.status }}
+                </p>
+
+            </div>
+
+            <a href="/shop" class="shop-btn">
+                Continue Shopping
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+            © 2026 Scoops.lb. All Rights Reserved.
+        </p>
+
+    </footer>
+
+</body>
+</html>

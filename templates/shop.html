@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Scoops.lb</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Navigation -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        Mystery Scoops
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/shop">Shop</a></li>
+        <li><a href="/contact">Contact</a></li>
+
+        <li>
+            <a href="/cart">
+                Cart
+
+                {% if session.get('cart') %}
+                    <span class="cart-badge">
+                        {{ session.get('cart').values()|sum }}
+                    </span>
+                {% endif %}
+            </a>
+        </li>
+
+     </ul>
+
+</nav>
+
+
+    <!-- Shop Header -->
+
+    <section class="shop-header">
+
+        <h1>Shop Mystery Scoops</h1>
+
+        <p>
+            Choose your favorite mystery products.
+        </p>
+
+    </section>
+
+    <!-- Search -->
+
+    <section class="search-section">
+
+        <form method="GET" action="/shop">
+
+            <input
+                type="text"
+                name="search"
+                placeholder="Search products..."
+                value="{{ search }}"
+            >
+
+            <button type="submit">
+                Search
+            </button>
+
+        </form>
+
+    </section>
+
+    <!-- Products -->
+
+    <section class="products">
+
+        <div class="product-grid">
+
+            {% for product in products %}
+
+<div class="product-card">
+
+    {% if product.image %}
+    <img src="{{ url_for('static', filename='images/' + product.image) }}">
+{% endif %}
+
+    <h3>{{ product.name }}</h3>
+
+    <p>{{ product.description }}</p>
+
+    <p class="price">${{ product.price }}</p>
+
+    {% if product.stock == 0 %}
+        <p style="color:red;">Out of Stock</p>
+    {% else %}
+        <a href="/add_to_cart/{{ product.id }}">
+            <button class="btn">Add to Cart</button>
+        </a>
+    {% endif %}
+
+</div>
+
+{% endfor %}
+
+    </section>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+            © 2026 Scoops.lb. All Rights Reserved.
+        </p>
+
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - Scoops.lb</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Navigation -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Scoops.lb
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/shop">Shop</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/cart">Cart</a></li>
+        </ul>
+
+    </nav>
+
+    <!-- Cart Section -->
+
+    <section class="cart-page">
+
+        <h1>Your Cart</h1>
+
+        {% if items %}
+
+        <div class="cart-container">
+
+            {% for item in items %}
+
+            <div class="cart-item">
+
+                <div class="cart-info">
+
+                    <h3>{{ item.product.name }}</h3>
+
+                    <p>{{ item.product.description }}</p>
+
+                    <p>
+                        Price: ${{ item.product.price }}
+                    </p>
+
+                    <p>
+                        <div style="margin:15px 0;">
+
+    <a href="/decrease_quantity/{{ item.product.id }}">
+        <button class="btn">-</button>
+    </a>
+
+    <span style="padding:0 15px;font-size:20px;">
+        {{ item.quantity }}
+    </span>
+
+    <a href="/increase_quantity/{{ item.product.id }}">
+        <button class="btn">+</button>
+    </a>
+
+</div>
+                    </p>
+
+                    <p>
+                        Subtotal: ${{ item.subtotal }}
+                    </p>
+
+                </div>
+
+                <a
+                    href="/remove_from_cart/{{ item.product.id }}"
+                    class="remove-btn"
+                >
+                    Remove
+                </a>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        <div class="cart-total">
+
+            <h2>
+                Total: ${{ total }}
+            </h2>
+
+            <a
+                href="/checkout"
+                class="checkout-btn"
+            >
+                Proceed to Checkout
+            </a>
+
+        </div>
+
+        {% else %}
+
+        <div class="empty-cart">
+
+            <h2>Your cart is empty.</h2>
+
+            <a
+                href="/shop"
+                class="shop-btn"
+            >
+                Continue Shopping
+            </a>
+
+        </div>
+
+        {% endif %}
+
+    </section>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+            © 2026 Scoops.lb. All Rights Reserved.
+        </p>
+
+    </footer>
+
+</body>
+</html>

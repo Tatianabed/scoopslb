@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Scoops.lb</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #fff8f2;
+            margin: 0;
+        }
+
+        nav {
+            background: #ff4d6d;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            margin-left: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .top-actions {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .btn {
+            background: #ff4d6d;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+            text-align: center;
+        }
+
+        th {
+            background: #ffe0e9;
+        }
+
+        .delete {
+            color: red;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .edit {
+            color: blue;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .status {
+            color: green;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+<a href="/admin/settings">Settings</a>
+    <div><b>Scoops.lb Admin</b></div>
+
+    <div>
+        <a href="/">Home</a>
+        <a href="/shop">Shop</a>
+    </div>
+</nav>
+
+<div class="container">
+
+    <h1>Admin Dashboard 🍦</h1>
+
+    <div class="top-actions">
+        <a href="/product/add" class="btn">+ Add Product</a>
+    </div>
+
+    <!-- PRODUCTS -->
+    <h2>Products</h2>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Actions</th>
+        </tr>
+
+        {% for product in products %}
+        <tr>
+            <td>{{ product.id }}</td>
+
+           {% if product.image %}
+    <img src="{{ product.image }}" width="60">
+{% else %}
+    No Image
+{% endif %}
+
+            <td>{{ product.name }}</td>
+            <td>${{ product.price }}</td>
+            <td>{{ product.stock }}</td>
+
+            <td>
+    <a href="/product/edit/{{ product.id }}" class="delete-btn">Delete</a>
+    <a href="/product/edit/{{ product.id }}" class="edit-btn">Edit</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- ORDERS -->
+    <h2 style="margin-top:40px;">Orders</h2>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Customer</th>
+            <th>Phone</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Address</th>
+            <th>Action</th>
+        </tr>
+
+        {% for order in orders %}
+        <tr>
+            <td>#{{ order.id }}</td>
+            <td>{{ order.customer_name }}</td>
+            <td>{{ order.phone }}</td>
+            <td>${{ order.total_price }}</td>
+            <td>{{ order.status }}</td>
+            <td>
+                {{ order.city }},
+                {{ order.street_name }},
+                {{ order.building }},
+                Floor {{ order.floor_number }}
+            </td>
+            <td>
+                <a class="status" href="/order/status/{{ order.id }}">Toggle</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+</body>
+</html>

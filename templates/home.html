@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoops.lb</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/shop">Shop</a>
+    </div>
+
+    <div class="nav-links">
+        <a href="/contact">Contact</a>
+        <a href="/cart">Cart</a>
+    </div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <img src="{{ url_for('static', filename='images/logo.png') }}"
+         class="hero-logo">
+
+    <h1>Every Scoop Holds A Surprise 🎁</h1>
+
+    <p>
+        Mystery collectibles, cute accessories,
+        toys, rare finds and exciting surprises
+        waiting to be discovered.
+    </p>
+
+    <a href="/shop">
+        <button class="shop-btn">
+            Order Now
+        </button>
+    </a>
+
+</section>
+
+<!-- FEATURES -->
+
+<section class="features">
+
+    <div class="feature-card">
+        <h3>🎁 Mystery Items</h3>
+        <p>
+            Every scoop contains a surprise item.
+        </p>
+    </div>
+
+    <div class="feature-card">
+        <h3>⭐ Rare Finds</h3>
+        <p>
+            Discover exclusive and limited items.
+        </p>
+    </div>
+
+    <div class="feature-card">
+        <h3>🚚 Fast Delivery</h3>
+        <p>
+            Quick delivery across Lebanon.
+        </p>
+    </div>
+
+</section>
+
+<!-- PRODUCTS -->
+
+<section class="products-section">
+
+    <h2>🔥 Popular Mystery Scoops</h2>
+
+    <div class="product-grid">
+
+        {% for product in products %}
+
+        <div class="product-card">
+
+            {% if product.image %}
+                <img src="{{ url_for('static', filename='images/' + product.image) }}">
+            {% else %}
+                <div class="placeholder">
+                    🎁 Mystery Scoop
+                </div>
+            {% endif %}
+
+            <h3>{{ product.name }}</h3>
+
+            <p>{{ product.description }}</p>
+
+            <h4>${{ product.price }}</h4>
+
+            <a href="/add_to_cart/{{ product.id }}">
+                <button class="btn">
+                    Order Now
+                </button>
+            </a>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section class="about-section">
+
+    <h2>Why Customers Love Scoops.lb 💜</h2>
+
+    <div class="about-grid">
+
+        <div class="about-card">
+            🎀 Fun Unboxing Experience
+        </div>
+
+        <div class="about-card">
+            🎁 Every Order Is Different
+        </div>
+
+        <div class="about-card">
+            ⭐ New Items Added Regularly
+        </div>
+
+        <div class="about-card">
+            💜 Perfect Gift For Any Age
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+    <p>
+        © 2026 Scoops.lb — Mystery, Fun & Surprises.
+    </p>
+
+</footer>
+
+</body>
+</html>
