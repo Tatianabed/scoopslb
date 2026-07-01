@@ -398,4 +398,3 @@ textarea{
     padding: 30px;
     border-radius: 10px;
 }
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
