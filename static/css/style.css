@@ -386,3 +386,15 @@ textarea{
     font-weight: bold;
     margin-left: 4px;
 }
+.checkout-page {
+    padding: 40px 0;
+    background: #f8f8f8;
+}
+
+.checkout-container {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+}
