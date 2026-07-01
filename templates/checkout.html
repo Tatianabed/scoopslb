@@ -1,145 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout - Scoops.lb</title>
+<form method="POST">
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
+    <!-- Customer Information -->
 
-    <!-- Navigation -->
+    <label for="customer_name">
+        Full Name <span class="required">*</span>
+    </label>
+    <input type="text" id="customer_name" name="customer_name" required>
 
-    <nav class="navbar">
+    <label for="phone">
+        Phone Number <span class="required">*</span>
+    </label>
+    <input type="text" id="phone" name="phone" required>
 
-        <div class="logo">
-            Scoops.lb
-        </div>
+    <!-- Address Information -->
 
-        <ul class="nav-links">
-            <li><a href="/">Home</a></li>
-            <li><a href="/shop">Shop</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="/cart">Cart</a></li>
-        </ul>
+    <label for="city">
+        City <span class="required">*</span>
+    </label>
+    <input type="text" id="city" name="city" required>
 
-    </nav>
+    <label for="street_name">
+        Street Name <span class="required">*</span>
+    </label>
+    <input type="text" id="street_name" name="street_name" required>
 
-    <!-- Checkout Section -->
+    <label for="building">
+        Apartment / Building <span class="required">*</span>
+    </label>
+    <input type="text" id="building" name="building" required>
 
-    <section class="checkout-page">
+    <label for="floor_number">
+        Floor Number <span class="required">*</span>
+    </label>
+    <input type="text" id="floor_number" name="floor_number" required>
 
-        <div class="checkout-container">
+    <button type="submit" class="checkout-btn">
+        Place Order
+    </button>
 
-            <h1>Checkout</h1>
-
-            <p>
-                Please fill in your delivery information.
-            </p>
-
-            <h2>
-                <p>Subtotal: ${{ total }}</p>
-
-<p>Delivery Fee: ${{ delivery }}</p>
-
-<h3>Total: ${{ final_total }}</h3>
-            </h2>
-
-            <form method="POST">
-
-                <!-- Customer Information -->
-
-                <label for="customer_name">
-                    Full Name
-                </label>
-
-                <input
-                    type="text"
-                    id="customer_name"
-                    name="customer_name"
-                    required
-                >
-
-                <label for="phone">
-                    Phone Number
-                </label>
-
-                <input
-                    type="text"
-                    id="phone"
-                    name="phone"
-                    required
-                >
-
-                <!-- Address Information -->
-
-                <label for="city">
-                    City
-                </label>
-
-                <input
-                    type="text"
-                    id="city"
-                    name="city"
-                    required
-                >
-
-                <label for="street_name">
-                    Street Name
-                </label>
-
-                <input
-                    type="text"
-                    id="street_name"
-                    name="street_name"
-                    required
-                >
-
-                <label for="building">
-                    Apartment / Building
-                </label>
-
-                <input
-                    type="text"
-                    id="building"
-                    name="building"
-                    required
-                >
-
-                <label for="floor_number">
-                    Floor Number
-                </label>
-
-                <input
-                    type="text"
-                    id="floor_number"
-                    name="floor_number"
-                    required
-                >
-
-                <button
-                    type="submit"
-                    class="checkout-btn"
-                >
-                    Place Order
-                </button>
-
-            </form>
-
-        </div>
-
-    </section>
-
-    <!-- Footer -->
-
-    <footer>
-
-        <p>
-            © 2026 Scoops.lb. All Rights Reserved.
-        </p>
-
-    </footer>
-
-</body>
-</html>
+</form>
