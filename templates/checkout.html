@@ -1,41 +1,51 @@
-<form method="POST">
+<section class="checkout-page">
 
-    <!-- Customer Information -->
+    <div class="checkout-container">
 
-    <label for="customer_name">
-        Full Name <span class="required">*</span>
-    </label>
-    <input type="text" id="customer_name" name="customer_name" required>
+        <h1>Checkout</h1>
 
-    <label for="phone">
-        Phone Number <span class="required">*</span>
-    </label>
-    <input type="text" id="phone" name="phone" required>
+        <p class="checkout-text">
+            Please fill in your delivery information.
+        </p>
 
-    <!-- Address Information -->
+        <form method="POST">
 
-    <label for="city">
-        City <span class="required">*</span>
-    </label>
-    <input type="text" id="city" name="city" required>
+            <label for="customer_name">
+                Full Name <span class="required">*</span>
+            </label>
+            <input type="text" id="customer_name" name="customer_name" required>
 
-    <label for="street_name">
-        Street Name <span class="required">*</span>
-    </label>
-    <input type="text" id="street_name" name="street_name" required>
+            <label for="phone">
+                Phone Number <span class="required">*</span>
+            </label>
+            <input type="text" id="phone" name="phone" required>
 
-    <label for="building">
-        Apartment / Building <span class="required">*</span>
-    </label>
-    <input type="text" id="building" name="building" required>
+            <label for="city">
+                City <span class="required">*</span>
+            </label>
+            <input type="text" id="city" name="city" required>
 
-    <label for="floor_number">
-        Floor Number <span class="required">*</span>
-    </label>
-    <input type="text" id="floor_number" name="floor_number" required>
+            <label for="street_name">
+                Street Name <span class="required">*</span>
+            </label>
+            <input type="text" id="street_name" name="street_name" required>
 
-    <button type="submit" class="checkout-btn">
-        Place Order
-    </button>
+            <label for="building">
+                Apartment / Building <span class="required">*</span>
+            </label>
+            <input type="text" id="building" name="building" required>
 
-</form>
+            <label for="floor_number">
+                Floor Number <span class="required">*</span>
+            </label>
+            <input type="text" id="floor_number" name="floor_number" required>
+
+            <button type="submit" class="checkout-btn">
+                Place Order
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
