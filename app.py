@@ -293,6 +293,40 @@ def checkout():
         delivery=delivery,
         final_total=final_total
     )
+# ==========================
+# ADMIN LOGIN
+# ==========================
+
+@app.route('/admin/login', methods=['GET', 'POST'])
+def admin_login():
+
+    if request.method == 'POST':
+
+        username = request.form['username']
+        password = request.form['password']
+
+        admin = Admin.query.filter_by(username=username).first()
+
+        if admin and check_password_hash(admin.password, password):
+
+            session['admin'] = admin.id
+
+            return redirect(url_for('dashboard'))
+
+        flash("Invalid username or password.")
+
+    return render_template('admin_login.html')
+
+# ==========================
+# LOGOUT
+# ==========================
+
+@app.route('/logout')
+def logout():
+
+    session.pop('admin', None)
+
+    return redirect(url_for('admin_login'))
 
 # ==========================
 # DASHBOARD
@@ -353,6 +387,70 @@ def add_product():
         return redirect(url_for('dashboard'))
 
     return render_template('add_product.html')
+
+# ==========================
+# EDIT PRODUCT
+# ==========================
+
+# ==========================
+# EDIT PRODUCT
+# ==========================
+
+@app.route('/product/edit/<int:product_id>', methods=['GET', 'POST'])
+def edit_product(product_id):
+
+    if 'admin' not in session:
+        return redirect(url_for('admin_login'))
+
+    product = Product.query.get_or_404(product_id)
+
+    if request.method == 'POST':
+
+        product.name = request.form['name']
+        product.description = request.form['description']
+        product.price = float(request.form['price'])
+        product.stock = int(request.form['stock'])
+
+        file = request.files.get('image')
+
+        if file and file.filename != "":
+            filename = secure_filename(file.filename)
+            file.save(os.path.join("static/images", filename))
+            product.image = filename
+
+        db.session.commit()
+
+        flash("Product updated successfully!")
+
+        return redirect(url_for('dashboard'))
+
+    return render_template(
+        'edit_product.html',
+        product=product
+    )
+# ==========================
+# DELETE PRODUCT
+# ==========================
+
+# ==========================
+# DELETE PRODUCT
+# ==========================
+
+@app.route('/product/delete/<int:product_id>')
+def delete_product(product_id):
+
+    if 'admin' not in session:
+        return redirect(url_for('admin_login'))
+
+    product = Product.query.get_or_404(product_id)
+
+    db.session.delete(product)
+
+    db.session.commit()
+
+    flash("Product deleted successfully!")
+
+    return redirect(url_for('dashboard'))
 @app.route('/admin/settings', methods=['GET', 'POST'])
 def admin_settings():
 
