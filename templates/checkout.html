@@ -1,3 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Scoops.lb</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+        Scoops.lb
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/shop">Shop</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/cart">Cart</a></li>
+    </ul>
+
+</nav>
+
 <section class="checkout-page">
 
     <div class="checkout-container">
@@ -8,37 +35,41 @@
             Please fill in your delivery information.
         </p>
 
+        <p><strong>Subtotal:</strong> ${{ total }}</p>
+        <p><strong>Delivery Fee:</strong> ${{ delivery }}</p>
+        <h2>Total: ${{ final_total }}</h2>
+
         <form method="POST">
 
-            <label for="customer_name">
+            <label>
                 Full Name <span class="required">*</span>
             </label>
-            <input type="text" id="customer_name" name="customer_name" required>
+            <input type="text" name="customer_name" required>
 
-            <label for="phone">
+            <label>
                 Phone Number <span class="required">*</span>
             </label>
-            <input type="text" id="phone" name="phone" required>
+            <input type="text" name="phone" required>
 
-            <label for="city">
+            <label>
                 City <span class="required">*</span>
             </label>
-            <input type="text" id="city" name="city" required>
+            <input type="text" name="city" required>
 
-            <label for="street_name">
+            <label>
                 Street Name <span class="required">*</span>
             </label>
-            <input type="text" id="street_name" name="street_name" required>
+            <input type="text" name="street_name" required>
 
-            <label for="building">
-                Apartment / Building <span class="required">*</span>
+            <label>
+                Building / Apartment <span class="required">*</span>
             </label>
-            <input type="text" id="building" name="building" required>
+            <input type="text" name="building" required>
 
-            <label for="floor_number">
+            <label>
                 Floor Number <span class="required">*</span>
             </label>
-            <input type="text" id="floor_number" name="floor_number" required>
+            <input type="text" name="floor_number" required>
 
             <button type="submit" class="checkout-btn">
                 Place Order
@@ -49,3 +80,10 @@
     </div>
 
 </section>
+
+<footer>
+    <p>© 2026 Scoops.lb. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
